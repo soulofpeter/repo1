@@ -1,7 +1,7 @@
-FROM ubuntu:16.04
+FROM python:3.7
 
-RUN apt-get update && apt-get install -y vim apache2
+RUN mkdir /echo
+COPY test_server.py /echo
 
-COPY index.html /var/www/html/
+CMD ["python", "/echo/test_server.py"]
 
-CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
