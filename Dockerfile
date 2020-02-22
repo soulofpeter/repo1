@@ -1,3 +1,5 @@
-FROM httpd
-EXPOSE 80
-CMD httpd -D FOREGROUND
+FROM redis:5-alpine
+
+COPY redis.conf .
+
+ENTRYPOINT ["redis-server", "./redis.conf"]
